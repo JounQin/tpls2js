@@ -1,6 +1,6 @@
 {
   "name": "tpls2js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "parse templates in section of template tag and compile into js object",
   "main": "dist/tpls2js.js",
   "module": "src/index.js",
