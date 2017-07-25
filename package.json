@@ -3,12 +3,19 @@
   "version": "0.0.1",
   "description": "parse templates in section of template tag and compile into js object",
   "main": "dist/tpls2js.js",
+  "module": "src/index.js",
   "repository": "https://github.com/JounQin/tpls2js.git",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
+  "files": [
+    "dist/**.js",
+    "src/**.js"
+  ],
   "scripts": {
+    "build": "rollup -c",
     "lint": "eslint . --max-warnings 10",
     "lint:fix": "npm run lint -- --fix",
+    "pretest": "npm run build",
     "test": "jest",
     "prepublishOnly": "npm run lint && npm run test"
   },
@@ -21,6 +28,10 @@
     "eslint": "^4.3.0",
     "eslint-config-1stg": "^0.0.4",
     "jest": "^20.0.4",
+    "rollup": "^0.45.2",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
     "underscore": "^1.8.3"
   }
 }
