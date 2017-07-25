@@ -18,7 +18,7 @@ export default class {
 
       const {childNodes} = parse(data.toString())
 
-      let combined = {}
+      const combined = {}
 
       childNodes.forEach(node => {
         if (node.tagName !== 'template') return
@@ -41,13 +41,12 @@ export default class {
 
     switch (typeof output) {
       case 'string':
-        fs.writeFile(output, result, err => callback(err, result))
-        break
-      case 'function' :
+        return fs.writeFile(output, result, err => callback(err, result))
+      case 'function':
         output(result)
-      default:
-        callback(null, result)
     }
+
+    callback(null, result)
 
     return result
   }

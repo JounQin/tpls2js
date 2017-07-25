@@ -4,9 +4,9 @@ import vm from 'vm'
 
 import _ from 'underscore'
 
-const resolve = (...args) => path.resolve(__dirname, ...args)
-
 import Tpls2js from '../../src/index'
+
+const resolve = (...args) => path.resolve(__dirname, ...args)
 
 const exportsName = 'tpls'
 
@@ -21,7 +21,9 @@ test('generate runnable js code', done => {
   })
 
   tpls2js.compile(tpl, combined => {
-    expect(run(tpls2js.generate(combined), 'first', {msg: 'Hello tpls2js'})).toBe('<div class="first">Hello tpls2js</div>')
+    expect(run(tpls2js.generate(combined), 'first', {msg: 'Hello tpls2js'})).toBe(
+      '<div class="first">Hello tpls2js</div>'
+    )
     done()
   })
 })
@@ -36,6 +38,7 @@ test('generate js file ', done => {
 
   tpls2js.compile(tpl, combined =>
     tpls2js.generate(combined, (err, result) => {
+      expect(err).toBe(null)
       expect(fs.readFileSync(output).toString()).toBe(result)
       done()
     })

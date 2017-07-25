@@ -7,6 +7,8 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint . --max-warnings 10",
+    "lint:fix": "npm run lint -- --fix",
     "test": "jest"
   },
   "dependencies": {
@@ -15,6 +17,8 @@
   "devDependencies": {
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.3.0",
+    "eslint-config-1stg": "^0.0.4",
     "jest": "^20.0.4",
     "underscore": "^1.8.3"
   }
