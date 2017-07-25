@@ -1,3 +1,15 @@
 <template engine="underscore" id="first">
   <div class="first"><%- msg %></div>
 </template>
+
+<template engine="underscore" id="second">
+  <div class="second">
+    <ul>
+      <% _.each(items, function(item) {%>
+        <li>
+          <img src="<%- img.src %>">
+        </li>
+      <%}) %>
+    </ul>
+  </div>
+</template>

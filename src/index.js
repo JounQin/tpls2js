@@ -7,13 +7,14 @@ const noop = () => {}
 
 const DEFAULT_SUFFIXES = ['.html']
 
-export default class {
-  constructor({exportsName, defaultEngine, output} = {}) {
+export default class Tpls2js {
+  constructor({exportsName, defaultEngine, output, compilers = {}} = {}) {
     if (!exportsName) throw new Error('invalid options without `exportsName`')
     this.exportsName = exportsName
     this.defaultEngine = defaultEngine
     this.suffixes = DEFAULT_SUFFIXES
     this.output = output
+    this.compilers = compilers
   }
 
   readFile(file, callback, combined = {}) {
@@ -27,7 +28,11 @@ export default class {
 
         const {id, engine} = getAttrs(node.attrs, ['engine', 'id'], {engine: this.defaultEngine})
 
-        combined[id] = compilers[engine](serialize(node.content))
+        if (!id || !engine) {
+          return callback(new Error(`no id or engine found in file ${file}`))
+        }
+
+        combined[id] = (this.compilers[engine] || compilers[engine])(serialize(node.content), file)
       })
 
       callback(null, combined)
