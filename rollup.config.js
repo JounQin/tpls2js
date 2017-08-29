@@ -13,9 +13,11 @@ export default {
  *
  * Github: https://github.com/JounQin/tpls2js
  */`,
-  entry: 'src/index.js',
-  dest: 'dist/tpls2js.js',
-  format: 'cjs',
+  input: 'src/index.js',
+  output: {
+    file: 'dist/tpls2js.js',
+    format: 'cjs'
+  },
   plugins: [resolve(), commonjs(), buble()],
   external: ['fs', 'path', 'parse5', 'parse5/lib/serializer']
 }
